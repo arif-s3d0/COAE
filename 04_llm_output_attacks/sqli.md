@@ -8,23 +8,25 @@
 ### SQLite
 
 ```sql
--- List all tables
+-- All tables
 SELECT name FROM sqlite_master WHERE type='table'
 SELECT tbl_name FROM sqlite_master
 
 -- List columns of a specific table
 SELECT name FROM pragma_table_info('table_name');
 SELECT GROUP_CONCAT(name) FROM pragma_table_info('table_name')
+
+-- Dump table name + full CREATE statement (shows all columns)
+SELECT GROUP_CONCAT(sql, char(10)) FROM sqlite_master WHERE type='table';
 ```
 
 ### Mysql
--- List all tables
 ```sql
+-- All tables
 SELECT table_name FROM information_schema.tables
 SELECT GROUP_CONCAT(table_schema,0x2e,table_name SEPARATOR 0x0a) FROM information_schema.tables
 
 -- List columns of a specific table
-SELECT table_name FROM information_schema.tables
 SELECT GROUP_CONCAT(table_name,0x2e,column_name SEPARATOR 0x0a) FROM information_schema.columns WHERE table_schema=0x6d63705f6462
 ```
 
